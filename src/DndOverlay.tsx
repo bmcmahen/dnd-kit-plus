@@ -2,7 +2,7 @@
 import type { PropsWithChildren } from "react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import ReactDOM from "react-dom";
-import { useMotionValue, useSpring } from "framer-motion";
+import { useMotionValue, useSpring, motion } from "framer-motion";
 import type { Entity } from "./dnd-state";
 
 export type DndOverlayProps<T> = {
@@ -167,7 +167,8 @@ function PositionedEntity({ positions, i, mouseX, mouseY, children }) {
   positions[i] = { x, y };
 
   return (
-    <div
+    <motion.div
+      data-dndoverlay-position
       style={{
         left: `${i * STAGGER_OFFSET}px`,
         top: `${i * STAGGER_OFFSET}px`,
@@ -177,7 +178,7 @@ function PositionedEntity({ positions, i, mouseX, mouseY, children }) {
       }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -187,5 +188,9 @@ function PositionedEntity({ positions, i, mouseX, mouseY, children }) {
 
 function MountAnimation({ children }: PropsWithChildren) {
   const ref = useRef(null);
-  return <div ref={ref}>{children}</div>;
+  return (
+    <div data-dndoverlay-scale ref={ref}>
+      {children}
+    </div>
+  );
 }

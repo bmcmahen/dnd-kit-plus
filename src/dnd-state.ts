@@ -81,34 +81,31 @@ export function dndStateReducer<T>(
       };
 
     case "drag-over":
-      return {
+      console.log("drag over", action.payload.id);
+      const updated = {
         ...state,
         over: new Map(
           state.over.set(action.payload.id, {
             status: "over",
-            entity: action.payload,
           })
         ),
       };
+
+      return updated;
 
     case "drag-leave": {
       const current = state.over.get(action.payload.id);
 
       return {
         ...state,
-        over: new Map(
-          state.over.set(action.payload.id, {
-            ...current,
-            status: "leave",
-          })
-        ),
+        over: new Map(),
       };
     }
 
     case "drag-leave-resolved":
       return {
         ...state,
-        over: new Map(state.over.delete(action.payload.id)),
+        over: new Map(),
       };
 
     case "drop-pending":

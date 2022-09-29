@@ -1,0 +1,13 @@
+.entity {
+  width: 200px;
+  height: 200px;
+  background: blue;
+}
+
+.entity[data-drag-state="dragging"] {
+  opacity: 0.2;
+}
+
+.entity[data-drag-state="over"] {
+  background: red;
+}

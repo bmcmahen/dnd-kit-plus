@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import mergeRefs from "react-merge-refs";
+import { mergeRefs } from "react-merge-refs";
 import { useDraggable, useDroppable } from "@dnd-kit/core";
 import { mergeProps } from "@react-aria/utils";
 import type { Entity } from "./dnd-state";
@@ -155,7 +155,7 @@ export function DndNode<T>({
 
   const { status, dragging } = useMemo(() => {
     // Something is being dragged over this element
-    const isOver = dndContext.over && dndContext.over.id === id;
+    const isOver = dndContext.over.has(id);
 
     if (isOver) {
       return {

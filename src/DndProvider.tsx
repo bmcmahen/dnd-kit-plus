@@ -60,7 +60,8 @@ function DndProviderComponent<T>({
     <DndContext
       collisionDetection={pointerWithin}
       onDragEnd={async (dragEvent) => {
-        if (!state.over) {
+        if (!dragEvent.over) {
+          console.log("cannellled");
           dispatch({ type: "drag-canceled" });
           return;
         }
@@ -88,6 +89,8 @@ function DndProviderComponent<T>({
       }}
       onDragOver={async (dragEvent) => {
         const id = dragEvent.over?.id;
+
+        console.log("drag over", id);
 
         const fns = dragEventCallbacks.get(id);
 
