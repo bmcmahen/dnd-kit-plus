@@ -3,7 +3,7 @@
 ```jsx
 function App({ children }) {
   const renderOverlayEntity = useCallback((entity) => {
-    return <AssetCard id={entity.id} />;
+    return <Card id={entity.id} />;
   }, []);
 
   return (
@@ -80,7 +80,7 @@ function ChildOfDndNode({ children }) {
 }
 ```
 
-Vapor components can integrate draggable apis to encourage better render
+Components can integrate draggable apis to encourage better render
 performance and prepared animations.
 
 ```jsx
