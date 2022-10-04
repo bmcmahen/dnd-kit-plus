@@ -1,4 +1,7 @@
-## Dnd arch
+## Dnd-kit-plus
+
+dnd-kit is amazing, but you can run into performance issues if you don't use the hooks in a particular way. this little library attempts to provide a component layer on top of dnd-kit which encourages composition and best perf practices.
+
 
 ```jsx
 function App({ children }) {
